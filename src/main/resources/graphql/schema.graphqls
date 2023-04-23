@@ -1,0 +1,71 @@
+#scalar types
+scalar BigDecimal
+scalar LocalDateTime
+scalar DateTime
+
+type Mutation{
+    createBook(title: String, pages: Int, author: String): Book
+    addBook(book: BookInput):Book
+    batchCreate(books: [BookInput]!): [Book]
+    createCoffee(name: String, size: Size): Coffee
+}
+
+type Query{
+    allProducts: [Product]!
+    findAllBooks: [Book]
+    allCoffee: [Coffee]!
+    findAllOrders: [Order]!
+}
+
+type Coffee{
+    id: ID!
+    name: String
+    size: Size
+}
+
+type Order{
+    orderId: ID!
+    coffee: Coffee
+    orderedOn: DateTime
+}
+
+type User{
+    userId: ID!
+    username: String
+}
+
+type Product{
+    id: ID!
+    title: String  
+    isOnSale: Boolean
+    weight: Float
+    price: BigDecimal
+    dateCreated: LocalDateTime
+}
+
+type Book {
+    id: ID!
+    title: String
+    pages: Int
+    author: String
+    reviews: [Review]
+}
+
+type Review{
+    id: ID!
+    title: String
+    comment: String
+}
+
+input BookInput {
+    title: String
+    pages: Int
+    author: String
+}
+
+enum Size{
+    SHORT
+    TALL
+    GRANDE
+    VENTI
+}

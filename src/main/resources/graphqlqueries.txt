@@ -1,0 +1,91 @@
+# url: http://localhost:8080/graphiql?path=/graphql
+
+query FindAllBooks{
+  findAllBooks{
+    id
+    title
+    pages
+    author
+    reviews{
+      id
+      title
+      comment
+    }
+  }
+}
+
+mutation CreateBook{
+  createBook(title: "My New Book", pages: 99, author: "Kuldeep Singh"){
+    id
+    title
+    pages
+    author
+  }
+}
+
+mutation AddBook{
+  addBook(book:{
+    title: "Another New Book",
+    pages: 199, 
+    author: "Kuldeep Singh"
+  }){
+    id
+    title
+    pages
+    author
+  }
+}
+
+mutation BatchCreate{
+  batchCreate(books: [
+    {title: "Batch Book1", pages: 50, author: "Kuldeep Singh"},
+    {title: "Batch Book2", pages: 100, author: "Kuldeep Singh"},
+    {title: "Batch Book3", pages: 130, author: "Kuldeep Singh"},
+    {title: "Batch Book4", pages: 68, author: "Kuldeep Singh"},
+    {title: "Batch Book5", pages: 99, author: "Kuldeep Singh"},
+  ]){
+    id
+    title
+    pages
+    author
+  }
+}
+
+query AllProducts{
+  allProducts{
+    id
+    title
+    isOnSale
+    weight
+    price
+    dateCreated
+  }
+}
+
+query FindAllCoffee{
+  allCoffee{
+    id
+    name
+    size
+  }
+}
+
+mutation CreateCoffee{
+  createCoffee(name: "TEST",size: SHORT){
+    id
+    name
+    size
+  }
+}
+
+query FindAllOrders{
+  findAllOrders{
+    orderId
+    orderedOn
+    coffee{
+      id
+      name
+      size
+    }
+  }
+}
